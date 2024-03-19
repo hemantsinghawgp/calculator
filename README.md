@@ -1,8 +1,8 @@
-# React Calculator App
+![image](https://github.com/hemantsinghawgp/calculator/assets/16399580/e11d48c0-b6ae-4981-b916-efda5e41e8ec)# React Calculator App
 
 This is a simple calculator application built using React.js. It allows users to perform basic arithmetic operations such as addition, subtraction, multiplication, and division.
 
-![Calculator App Screenshot](calculator-screenshot.png)
+![Calculator-screenshot](image.png)
 
 ## Features
 
