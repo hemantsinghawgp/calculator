@@ -3,6 +3,7 @@ import Wrapper from "./components/Wrapper";
 import Screen from "./components/Screen";
 import ButtonBox from "./components/ButtonBox";
 import Button from "./components/Button";
+import Footer from './components/Footer';
 
 const btnValues = [
   ["C", "+-", "%", "/"],
@@ -35,8 +36,8 @@ const App = () => {
           calc.num === 0 && value === "0"
             ? "0"
             : removeSpaces(calc.num) % 1 === 0
-            ? toLocaleString(Number(removeSpaces(calc.num + value)))
-            : toLocaleString(calc.num + value),
+              ? toLocaleString(Number(removeSpaces(calc.num + value)))
+              : toLocaleString(calc.num + value),
         res: !calc.sign ? 0 : calc.res,
       });
     }
@@ -70,10 +71,10 @@ const App = () => {
         sign === "+"
           ? a + b
           : sign === "-"
-          ? a - b
-          : sign === "X"
-          ? a * b
-          : a / b;
+            ? a - b
+            : sign === "X"
+              ? a * b
+              : a / b;
 
       setCalc({
         ...calc,
@@ -81,12 +82,12 @@ const App = () => {
           calc.num === "0" && calc.sign === "/"
             ? "Can't divide with 0"
             : toLocaleString(
-                math(
-                  Number(removeSpaces(calc.res)),
-                  Number(removeSpaces(calc.num)),
-                  calc.sign
-                )
-              ),
+              math(
+                Number(removeSpaces(calc.res)),
+                Number(removeSpaces(calc.num)),
+                calc.sign
+              )
+            ),
         sign: "",
         num: 0,
       });
@@ -124,35 +125,40 @@ const App = () => {
   };
 
   return (
-    <Wrapper>
-      <Screen value={calc.num ? calc.num : calc.res} />
-      <ButtonBox>
-        {btnValues.flat().map((btn, i) => {
-          return (
-            <Button
-              key={i}
-              className={btn === "=" ? "equals" : ""}
-              value={btn}
-              onClick={
-                btn === "C"
-                  ? resetClickHandler
-                  : btn === "+-"
-                  ? invertClickHandler
-                  : btn === "%"
-                  ? percentClickHandler
-                  : btn === "="
-                  ? equalsClickHandler
-                  : btn === "/" || btn === "X" || btn === "-" || btn === "+"
-                  ? signClickHandler
-                  : btn === "."
-                  ? commaClickHandler
-                  : numClickHandler
-              }
-            />
-          );
-        })}
-      </ButtonBox>
-    </Wrapper>
+    <div className="justify-content-center">
+
+      <Wrapper>
+        <Screen value={calc.num ? calc.num : calc.res} />
+        <ButtonBox>
+          {btnValues.flat().map((btn, i) => {
+            return (
+              <Button
+                key={i}
+                className={btn === "=" ? "equals" : ""}
+                value={btn}
+                onClick={
+                  btn === "C"
+                    ? resetClickHandler
+                    : btn === "+-"
+                      ? invertClickHandler
+                      : btn === "%"
+                        ? percentClickHandler
+                        : btn === "="
+                          ? equalsClickHandler
+                          : btn === "/" || btn === "X" || btn === "-" || btn === "+"
+                            ? signClickHandler
+                            : btn === "."
+                              ? commaClickHandler
+                              : numClickHandler
+                }
+              />
+            );
+          })}
+        </ButtonBox>
+
+      </Wrapper>
+      <Footer />
+    </div>
   );
 };
 
